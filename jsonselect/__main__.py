@@ -45,4 +45,6 @@ def cli():
     else:
         print json.dumps(selection, indent=4)
 
-cli()
+
+if __name__ == "__main__":
+    cli()

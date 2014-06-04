@@ -27,5 +27,10 @@ setup(
     ],
     keywords=[
         'json'
-    ]
+    ],
+    entry_points={
+        "console_scripts": [
+            "jsonselect=jsonselect.__main__:cli",
+        ]
+    }
 )
