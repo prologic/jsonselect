@@ -32,5 +32,7 @@ setup(
         "console_scripts": [
             "jsonselect=jsonselect.__main__:cli",
         ]
-    }
+    },
+    test_suite="tests.main.main",
+    zip_safe=True
 )

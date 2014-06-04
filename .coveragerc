@@ -1,0 +1,10 @@
+[run]
+omit = jsonselect/__init__.py
+       jsonselect/__main__.py
+       tests/*
+
+[html]
+directory = coverage
+
+[xml]
+output = coverage.xml
