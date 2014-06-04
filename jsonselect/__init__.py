@@ -5,4 +5,4 @@ __license__ = 'ISC'
 __copyright__ = 'Copyright 2011 Matthew Hooker'
 
 
-from .jsonselect import select
+from .jsonselect import select  # noqa
