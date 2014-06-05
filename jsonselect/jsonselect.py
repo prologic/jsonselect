@@ -76,8 +76,10 @@ EXPR_SCANNER = re.Scanner([
     (r"\(|\)", S_PAREN)
 ])
 
+
 class SelectorSyntaxError(Exception):
     pass
+
 
 class LexingError(SelectorSyntaxError):
     pass
@@ -97,7 +99,7 @@ def object_iter(obj, parent=None, parent_key=None, idx=None,
     """Yields each node of object graph in postorder."""
 
     obj_node = Node(value=obj, parent=parent, parent_key=parent_key,
-                siblings=siblings, idx=idx)
+                    siblings=siblings, idx=idx)
 
     if isinstance(obj, list):
         _siblings = len(obj)
@@ -110,6 +112,7 @@ def object_iter(obj, parent=None, parent_key=None, idx=None,
                 yield node
     yield obj_node
 
+
 def lex(input, scanner=SCANNER):
     tokens, rest = scanner.scan(input)
     if not len(tokens):
@@ -117,6 +120,7 @@ def lex(input, scanner=SCANNER):
     if len(rest):
         raise LexingError("found leftover tokens: (%s, %s)" % (tokens, rest))
     return [tok for tok in tokens if tok[0] != 'empty']
+
 
 def lex_expr(expression):
     tokens = lex(expression, scanner=EXPR_SCANNER)
@@ -190,7 +194,9 @@ class Parser(object):
 
         if self.peek(tokens, 'pclass_func'):
             pclass_func = self.match(tokens, 'pclass_func')
-            validators.append(self.pclass_func_production(pclass_func, tokens))
+            validators.append(
+                self.pclass_func_production(pclass_func, tokens)
+            )
 
         if not len(validators):
             raise SelectorSyntaxError('no selector recognized.')
@@ -362,7 +368,8 @@ class Parser(object):
 
         if pclass == 'has':
             # T:has(S)
-            # A node of type T which has a child node satisfying the selector S
+            # A node of type T which has a child node
+            # satisfying the selector S
             for i, token in enumerate(args):
                 if token[1] == '>':
                     args[i] = (token[0], ' ')
