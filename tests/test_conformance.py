@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 
-from pytest import raises, skip
+from pytest import raises
 from py.path import local as localpath
 
 
@@ -43,9 +43,6 @@ def pytest_generate_tests(metafunc):
 
 
 def test(level, selector, document, output):
-    if level == 3:
-        skip("Level 3 not implemented!")
-
     parser = Parser(document)
 
     try:
