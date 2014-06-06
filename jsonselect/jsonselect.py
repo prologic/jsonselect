@@ -14,15 +14,20 @@ TODO:
 T:expr(E)           3   A node of type T with a value that satisfies
                         the expression E
 """
+
+
 from __future__ import division
+
+
 import re
-import numbers
-import collections
-import logging
 import json
+import numbers
+import logging
+import collections
 
 
 log = logging.getLogger(__name__)
+
 
 S_TYPE = lambda x, token: ('type', token)
 S_IDENTIFIER = lambda x, token: ('identifier', token[1:])
@@ -89,7 +94,8 @@ Node = collections.namedtuple('Node', [
     'value',
     'parent',       # parent Node. None if root.
     'parent_key',   # if parent is a dict, key which indexes current Node.
-    'idx',          # if parent is an array, index of current Node. starts at 1.
+    'idx',          # if parent is an array, index of current Node.
+                    #    starts at 1.
     'siblings'      # if parent is an array, number of elements in it
 ])
 
