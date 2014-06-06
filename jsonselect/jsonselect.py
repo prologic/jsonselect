@@ -89,14 +89,14 @@ Node = collections.namedtuple('Node', [
     'value',
     'parent',       # parent Node. None if root.
     'parent_key',   # if parent is a dict, key which indexes current Node.
-    'idx',          # if parent is an array, index of curr Node. starts at 1.
+    'idx',          # if parent is an array, index of current Node. starts at 1.
     'siblings'      # if parent is an array, number of elements in it
 ])
 
 
 def object_iter(obj, parent=None, parent_key=None, idx=None,
                 siblings=None):
-    """Yields each node of object graph in postorder."""
+    """Yields each node of object graph in post-order."""
 
     obj_node = Node(value=obj, parent=parent, parent_key=parent_key,
                     siblings=siblings, idx=idx)
@@ -467,7 +467,7 @@ class Parser(object):
 
 
 def select(selector, obj):
-    """Appy selector to obj and return matching nodes.
+    """Apply selector to obj and return matching nodes.
 
     If only one node is found, return it, otherwise return a list of matches.
     Returns False on syntax error. None if no results found.
